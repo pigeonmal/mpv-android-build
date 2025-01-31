@@ -29,14 +29,16 @@ jobs:
         run: |
           mkdir sdk
           ln -s ${ANDROID_HOME} ./sdk/android-sdk-linux
+      - name: Install NASM
+        run: sudo apt-get update && sudo apt-get install -y nasm
       - name: Download dependencies
         working-directory: ./buildscripts
         run: ./download.sh
       - name: Build
         working-directory: ./buildscripts
         run: |
-          sudo chmod +x buildall.sh
-          ./buildall.sh
+          sudo chmod +x build.sh
+          ./build.sh
       - uses: actions/upload-artifact@v4
         with:
           name: artifact
