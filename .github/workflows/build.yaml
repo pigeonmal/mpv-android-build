@@ -34,7 +34,9 @@ jobs:
         run: ./download.sh
       - name: Build
         working-directory: ./buildscripts
-        run: ./build.sh
+        run: |
+          sudo chmod +x build.sh
+          ./build.sh
       - uses: actions/upload-artifact@v4
         with:
           name: artifact
